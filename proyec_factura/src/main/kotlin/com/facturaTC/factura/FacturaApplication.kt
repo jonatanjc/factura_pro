@@ -1,4 +1,4 @@
-package com.proyectoleslie.factura
+package com.facturaTC.factura
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

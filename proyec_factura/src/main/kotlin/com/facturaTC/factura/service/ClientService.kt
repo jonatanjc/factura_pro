@@ -1,7 +1,7 @@
-package com.proyectoleslie.factura.service
+package com.facturaTC.factura.service
 
-import com.proyectoleslie.factura.model.Client
-import com.proyectoleslie.factura.repository.ClientRepository
+import com.facturaTC.factura.model.Client
+import com.facturaTC.factura.repository.ClientRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Example
 import org.springframework.data.domain.ExampleMatcher

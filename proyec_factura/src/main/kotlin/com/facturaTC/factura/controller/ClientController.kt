@@ -1,7 +1,7 @@
-package com.proyectoleslie.factura.controller
+package com.facturaTC.factura.controller
 
-import com.proyectoleslie.factura.model.Client
-import com.proyectoleslie.factura.service.ClientService
+import com.facturaTC.factura.model.Client
+import com.facturaTC.factura.service.ClientService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus

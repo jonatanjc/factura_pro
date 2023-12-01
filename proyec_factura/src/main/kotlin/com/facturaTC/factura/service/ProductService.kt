@@ -1,7 +1,7 @@
-package com.proyectoleslie.factura.service
+package com.facturaTC.factura.service
 
-import com.proyectoleslie.factura.model.Product
-import com.proyectoleslie.factura.repository.ProductRepository
+import com.facturaTC.factura.model.Product
+import com.facturaTC.factura.repository.ProductRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
