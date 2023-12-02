@@ -1,5 +1,6 @@
 package com.facturaTC.factura.controller
 
+import com.facturaTC.factura.dto.ProductDto
 import com.facturaTC.factura.model.Product
 import com.facturaTC.factura.service.ProductService
 import org.springframework.beans.factory.annotation.Autowired
@@ -19,6 +20,11 @@ class ProductController {
         return productService.list()
     }
 
+    @GetMapping("/product-projection")
+    fun listDto(): List<ProductDto> {
+        return productService.listDto()
+
+    }
 
     @PostMapping
     fun save (@RequestBody product: Product): ResponseEntity<Product> {
