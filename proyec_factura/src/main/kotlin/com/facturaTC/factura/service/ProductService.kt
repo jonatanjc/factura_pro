@@ -1,5 +1,7 @@
 package com.facturaTC.factura.service
 
+import com.facturaTC.factura.dto.ProductDto
+import com.facturaTC.factura.mapper.ProductMapper
 import com.facturaTC.factura.model.Product
 import com.facturaTC.factura.repository.ProductRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,6 +17,20 @@ class ProductService {
     fun list ():List<Product>{
         return productRepository.findAll()
     }
+
+    fun listDto(): List<ProductDto> {
+        val productList = productRepository.findAll()
+        val productDtoList = mutableListOf<ProductDto>()
+
+        productList.map { product ->
+            val productDto = ProductMapper.mapToDto(product)
+            productDtoList.add(productDto)
+        }
+
+        return productDtoList
+    }
+
+
 
     fun save(product: Product): Product {
         try {

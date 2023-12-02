@@ -19,6 +19,7 @@ class ProductController {
         return productService.list()
     }
 
+
     @PostMapping
     fun save (@RequestBody product: Product): ResponseEntity<Product> {
         return ResponseEntity(productService.save(product), HttpStatus.OK )
