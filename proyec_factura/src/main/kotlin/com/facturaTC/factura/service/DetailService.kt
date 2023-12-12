@@ -47,15 +47,6 @@ class DetailService {
         try {
             detailRepository.findById(detail.id)
                 ?: throw Exception("ID no existe")
-
-            val response = detailRepository.save(detail)
-            val product = productRepository.findById(detail.productId)
-            product?.apply {
-                stok = stok?.minus(detail.quantity!!)
-            }
-            productRepository.save(product!!)
-            return response
-
             return detailRepository.save(detail)
         }
         catch (ex:Exception){
