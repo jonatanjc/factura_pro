@@ -11,7 +11,7 @@ class Detail {
     @Column(updatable = false)
     var id: Long? = null
     var quantity: Int? = null
-    var price: Int? = null
+    var price: Double? = null
     @Column(name="invoice_id")
     var invoiceId: Long? = null
     @Column(name="product_id")

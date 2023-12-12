@@ -24,30 +24,37 @@ class DetailService {
 
     fun save(detail: Detail):Detail{
         try {
-            // Verification logic for invoice and product existence
-            detail.invoiceId?.let { invoiceId ->
-                if (!invoiceRepository.existsById(invoiceId)) {
-                    throw ResponseStatusException(HttpStatus.NOT_FOUND, "Invoice not found for id: $invoiceId")
-                }
-            }
+            invoiceRepository.findById(detail.invoiceId)
+                ?: throw Exception("Id de factura no encontrado")
+            productRepository.findById(detail.productId)
+                ?: throw Exception("Id de producto no encontrado")
 
-            detail.productId?.let { productId ->
-                if (!productRepository.existsById(productId)) {
-                    throw ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found for id: $productId")
-                }
+            val response = detailRepository.save(detail)
+            val product = productRepository.findById(detail.productId)
+            product?.apply {
+                stok = stok?.minus(detail.quantity!!)
             }
-
-            // Save the detail
-            return detailRepository.save(detail)
-        } catch (ex: Exception) {
-            // Handle exceptions by wrapping them in a ResponseStatusException
-            throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error processing the request", ex)
+            productRepository.save(product!!)
+            return response
+        }
+        catch (ex : Exception){
+            throw ResponseStatusException(
+                HttpStatus.NOT_FOUND, ex.message, ex)
         }
     }
+
     fun update(detail: Detail): Detail {
         try {
             detailRepository.findById(detail.id)
                 ?: throw Exception("ID no existe")
+
+            val response = detailRepository.save(detail)
+            val product = productRepository.findById(detail.productId)
+            product?.apply {
+                stok = stok?.minus(detail.quantity!!)
+            }
+            productRepository.save(product!!)
+            return response
 
             return detailRepository.save(detail)
         }

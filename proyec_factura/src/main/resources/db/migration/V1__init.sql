@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS product(
     id SERIAL PRIMARY KEY,
     description VARCHAR(255),
     brand VARCHAR(255),
-    price INT,
+    price DECIMAL(10, 2) NOT NULL,
     stok INTEGER
 );
 CREATE TABLE IF NOT EXISTS detail(
