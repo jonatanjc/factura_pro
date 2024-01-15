@@ -8,7 +8,7 @@
 		<version>3.1.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.proyecto-leslie</groupId>
+	<groupId>com.facturaTC</groupId>
 	<artifactId>factura</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>factura</name>
